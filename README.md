@@ -34,7 +34,7 @@ With an approach like that, there won't be a need for `pause()` because `f` itse
 However, this is not in the spirit of asyncio.
 We like `f` as it is: a linear function that tells a nice story about what it does.
 
-## Implementing the `pause()`
+## The `pause()`
 
 Using two `Future` objects, one can implement the `pause()` functionality.
 Try running the following code:
@@ -111,6 +111,8 @@ So pausing abruptly shouldn't break anything on paper.
 But still, if the pause is long it might increase the chance of a buffer overflow, etc.
 It may also make reasoning about the code difficult because each coroutine can be at some random state when a pause happens.
 Also based on what we want to do when we pause, there may be a logical requirement to make the pause depend on more than one coroutine calling a function.
+
+## The `safepoint()`
 
 An interesting approach worth exploring is an implementation that uses a notion of *safepoints* to make the pause more predictable.
 In this design, the loop will pause only if *all* coroutines call a `pause()`, or what we may now call `safepoint()`.

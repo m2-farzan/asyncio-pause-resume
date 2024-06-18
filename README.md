@@ -100,6 +100,16 @@ if __name__ == "__main__":
     main()
 ```
 
+Output:
+```
+Part 1
+Paused
+Part 2
+Paused
+Part 3
+Paused
+```
+
 The implementation can be more sophisticated but I want all parts to be visible for now.
 
 The problem with this approach is that if you have more than one task running at the same time,
@@ -204,6 +214,22 @@ def main():
 if __name__ == "__main__":
     main()
 
+```
+
+Output:
+```
+App started.
+Starting event loop
+Task 1 started.
+Task 2 started.
+Task 1 at safe state.
+Task 2 at safe state.
+Event loop stopped. Resuming now
+Task 1 resuming.
+Task 2 resuming.
+Task 1 finished.
+Task 2 finished.
+Event loop stopped. Resuming now
 ```
 
 Look at that output!
